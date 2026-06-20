@@ -10,6 +10,8 @@ export type Workout = {
 
 import { API_BASE, normalizeApiResponse } from '../utils/api';
 
+// Expected backend API endpoint:
+// https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/workouts/
 function Workouts() {
   const [workouts, setWorkouts] = useState<Workout[]>([]);
   const [error, setError] = useState<string | null>(null);

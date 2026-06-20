@@ -9,6 +9,8 @@ export type Team = {
 
 import { API_BASE, normalizeApiResponse } from '../utils/api';
 
+// Expected backend API endpoint:
+// https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/teams/
 function Teams() {
   const [teams, setTeams] = useState<Team[]>([]);
   const [error, setError] = useState<string | null>(null);

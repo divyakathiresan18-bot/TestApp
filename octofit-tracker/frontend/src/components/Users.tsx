@@ -11,6 +11,8 @@ export type User = {
 
 import { API_BASE, normalizeApiResponse } from '../utils/api';
 
+// Expected backend API endpoint:
+// https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/users/
 function Users() {
   const [users, setUsers] = useState<User[]>([]);
   const [error, setError] = useState<string | null>(null);
