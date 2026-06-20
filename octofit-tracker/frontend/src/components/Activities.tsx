@@ -16,7 +16,7 @@ function Activities() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`${API_BASE}/activities`)
+    fetch(`${API_BASE}/activities/`)
       .then((res) => res.json())
       .then((data) => setActivities(normalizeApiResponse<Activity>(data)))
       .catch((err) => setError(err.message));

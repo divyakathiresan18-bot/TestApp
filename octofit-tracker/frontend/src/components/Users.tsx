@@ -16,7 +16,7 @@ function Users() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`${API_BASE}/users`)
+    fetch(`${API_BASE}/users/`)
       .then((res) => res.json())
       .then((data) => setUsers(normalizeApiResponse<User>(data)))
       .catch((err) => setError(err.message));

@@ -15,7 +15,7 @@ function Workouts() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`${API_BASE}/workouts`)
+    fetch(`${API_BASE}/workouts/`)
       .then((res) => res.json())
       .then((data) => setWorkouts(normalizeApiResponse<Workout>(data)))
       .catch((err) => setError(err.message));

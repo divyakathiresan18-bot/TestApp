@@ -14,7 +14,7 @@ function Teams() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`${API_BASE}/teams`)
+    fetch(`${API_BASE}/teams/`)
       .then((res) => res.json())
       .then((data) => setTeams(normalizeApiResponse<Team>(data)))
       .catch((err) => setError(err.message));
