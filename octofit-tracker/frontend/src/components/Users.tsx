@@ -9,9 +9,7 @@ export type User = {
   totalPoints: number;
 };
 
-const API_BASE = import.meta.env.VITE_CODESPACE_NAME
-  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api`
-  : 'http://localhost:8000/api';
+import { API_BASE, normalizeApiResponse } from '../utils/api';
 
 function Users() {
   const [users, setUsers] = useState<User[]>([]);
@@ -20,7 +18,7 @@ function Users() {
   useEffect(() => {
     fetch(`${API_BASE}/users`)
       .then((res) => res.json())
-      .then((data) => setUsers(Array.isArray(data) ? data : []))
+      .then((data) => setUsers(normalizeApiResponse<User>(data)))
       .catch((err) => setError(err.message));
   }, []);
 

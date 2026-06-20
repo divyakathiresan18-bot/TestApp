@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import { connectDatabase, MONGO_URI } from './config/database';
 import { User } from './models/User';
@@ -8,6 +9,7 @@ import { Workout } from './models/Workout';
 
 const app = express();
 const PORT = process.env.PORT || 8000;
+app.use(cors());
 const CODESPACE_NAME = process.env.CODESPACE_NAME;
 const API_URL = CODESPACE_NAME
   ? `https://${CODESPACE_NAME}-8000.app.github.dev`

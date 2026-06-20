@@ -8,9 +8,7 @@ export type LeaderboardEntry = {
   teamId: string;
 };
 
-const API_BASE = import.meta.env.VITE_CODESPACE_NAME
-  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api`
-  : 'http://localhost:8000/api';
+import { API_BASE, normalizeApiResponse } from '../utils/api';
 
 function Leaderboard() {
   const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
@@ -19,7 +17,7 @@ function Leaderboard() {
   useEffect(() => {
     fetch(`${API_BASE}/leaderboard`)
       .then((res) => res.json())
-      .then((data) => setEntries(Array.isArray(data) ? data : []))
+      .then((data) => setEntries(normalizeApiResponse<LeaderboardEntry>(data)))
       .catch((err) => setError(err.message));
   }, []);
 
