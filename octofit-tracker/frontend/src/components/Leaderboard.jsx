@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { API_BASE, normalizeApiResponse } from '../utils/api';
 
+// Expected backend API endpoint:
+// https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/
 function Leaderboard() {
   const [entries, setEntries] = useState([]);
   const [error, setError] = useState(null);
